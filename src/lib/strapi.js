@@ -4,6 +4,11 @@ export async function getHomeData() {
   const url = `${STRAPI_URL}/api/home?populate[sections][populate]=*`;
 
   const response = await fetch(url);
+  if (!response.ok) {
+  throw new Error(
+    `Fetch failed: ${response.status} ${response.statusText}`
+  );
+}
   const json = await response.json();
 
   return json.data;
@@ -46,6 +51,7 @@ export async function getCollectionData() {
   );
 
   const json = await response.json();
+  console.log(response,"kim");
 
   return json.data;
 }

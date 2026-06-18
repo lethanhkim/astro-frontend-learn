@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { marked } from "marked";
 
 import { getProducts, getProduct } from "../../lib/strapi";
 
@@ -12,13 +13,7 @@ export async function getStaticPaths() {
         },
     }));
 }
-
 const product = await getProduct(Astro.params.slug);
-
-if (!product) {
-    return Astro.redirect("/404");
-}
-import { marked } from "marked";
 
 const html = marked(product.content || "");
 ---
