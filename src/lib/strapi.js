@@ -29,7 +29,6 @@ export function getMediaURL(url) {
   return `${STRAPI_URL}${url}`;
 }
 export async function getAboutData() {
-  const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL;
 
   const response = await fetch(
     `${STRAPI_URL}/api/about?populate[sections][populate]=*`
@@ -41,7 +40,6 @@ export async function getAboutData() {
 }
 
 export async function getCollectionData() {
-  const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL;
 
   const response = await fetch(
     `${STRAPI_URL}/api/collection?populate[sections][populate]=*`
@@ -149,7 +147,6 @@ export async function getProduct(slug) {
     return data[0] || null;
 }
 export async function getSectionModuleData() {
-    const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL;
 
     const response = await fetch(
         `${STRAPI_URL}/api/collection?populate[sections][on][block.section-module][populate][products][populate]=*`
